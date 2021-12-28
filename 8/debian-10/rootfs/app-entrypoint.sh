@@ -45,16 +45,28 @@ replace_in_file() {
 # Returns: none
 #########################
 wait_for_db() {
+    local -r db_connection="${DB_CONNECTION:-mysql}"
+    if [[ "$db_connection" == "sqlite" ]]; then
+        local -r db_database="${DB_DATABASE:-/app/database.sqlite}"
+
+        if [[ ! -f "$db_database" ]]; then
+            log "Creating sqlite database at $db_database"
+            sqlite3 "$db_database" ""
+        fi
+
+        return
+    fi
+
     local -r db_host="${DB_HOST:-mariadb}"
     local -r db_port="${DB_PORT:-3306}"
     local db_address
     db_address=$(getent hosts "$db_host" | awk '{ print $1 }')
     local counter=0
-    log "Connecting to mariadb at $db_address"
+    log "Connecting to database at ${db_address}:${db_port}"
     while ! nc -z "$db_address" "$db_port" >/dev/null; do
         counter=$((counter + 1))
         if [ $counter == 30 ]; then
-            log "Error: Couldn't connect to mariadb."
+            log "Error: Couldn't connect to the database"
             exit 1
         fi
         log "Trying to connect to mariadb at $db_address. Attempt $counter."
@@ -86,7 +98,7 @@ if [ "${1}" == "php" ] && [ "$2" == "artisan" ] && [ "$3" == "serve" ]; then
     if [[ ! -d /app/vendor ]]; then
         composer install
         log "Dependencies installed"
-    else
+    elif [[ "${SKIP_COMPOSER_UPDATE:-false}" != "true" ]]; then
         composer update
         log "Dependencies updated"
     fi

@@ -1,5 +1,12 @@
+# Laravel packaged by Bitnami
 
-# Bitnami Laravel Development Container
+## What is Laravel?
+
+> Laravel is an open source PHP framework for web application development. 
+
+[Overview of Laravel](https://laravel.com/)
+
+Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
@@ -30,8 +37,7 @@ $ docker-compose up
 Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
 
 
-* [`8`, `8-debian-10`, `8.6.1`, `8.6.1-debian-10-r5`, `latest` (8/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-laravel/blob/8.6.1-debian-10-r5/8/debian-10/Dockerfile)
-* [`6`, `6-debian-10`, `6.20.1`, `6.20.1-debian-10-r98` (6/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-laravel/blob/6.20.1-debian-10-r98/6/debian-10/Dockerfile)
+* [`8`, `8-debian-10`, `8.6.10`, `8.6.10-debian-10-r5`, `latest` (8/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-laravel/blob/8.6.10-debian-10-r5/8/debian-10/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/laravel GitHub repo](https://github.com/bitnami/bitnami-docker-laravel).
 
@@ -72,11 +78,11 @@ Among other things, the above command creates a container service, named `myapp`
 >
 > If the application directory contained the source code of an existing Laravel application, the Bitnami Laravel Development Container would load the existing application instead of bootstrapping a new one.
 
-After the artisan application server has been launched in the `myapp` service, visit http://localhost:3000 in your favorite web browser and you'll be greeted by the default Laravel welcome page.
+After the artisan application server has been launched in the `myapp` service, visit `http://localhost:3000` in your favorite web browser and you'll be greeted by the default Laravel welcome page.
 
 > **Note**
 >
-> If no application available at http://localhost:3000 and you're running Docker on Windows, you might need to uncomment `privileged` setting for `myapp` container. Later, re-launch the Laravel application development environment as stated before.
+> If no application available at `http://localhost:3000` and you're running Docker on Windows, you might need to uncomment `privileged` setting for `myapp` container. Later, re-launch the Laravel application development environment as stated before.
 
 In addition to the Laravel Development Container, the [docker-compose.yml](https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/docker-compose.yml) file also configures a MariaDB service to serve as the database backend of your Laravel application.
 
@@ -130,17 +136,25 @@ We'd love for you to contribute to this container. You can request new features 
 
 We want to thank the following individuals for reporting vulnerabilities responsibly and helping improve the security of this container.
 
-- [LEI WANG](`https://github.com/ssst0n3): [APP_KEY fixed into the docker image](https://github.com/bitnami/bitnami-docker-laravel/issues/139)
+- [LEI WANG](https://github.com/ssst0n3): [APP_KEY fixed into the docker image](https://github.com/bitnami/bitnami-docker-laravel/issues/139)
 
 ## Issues
 
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/bitnami-docker-laravel/issues/new). For us to provide better support, be sure to include the following information in your issue:
+If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/bitnami-docker-laravel/issues/new). Be sure to include the following information in your issue:
 
-- Host OS and version (`uname -a`)
+- Host OS and version
 - Docker version (`docker version`)
-- Docker info (`docker info`)
-- Docker image version (`echo $BITNAMI_IMAGE_VERSION` inside the container)
-- Steps to reproduce the issue.
+- Output of `docker info`
+- Version of this container
+- The command you used to run the container, and any relevant output you saw (masking any sensitive information)
+
+### Community supported solution
+
+Please, note this asset is a community-supported solution. This means that the Bitnami team is not actively working on new features/improvements nor providing support through GitHub Issues. Any new issue will stay open for 20 days to allow the community to contribute, after 15 days without activity the issue will be marked as stale being closed after 5 days.
+
+The Bitnami team will review any PR that is created, feel free to create a PR if you find any issue or want to implement a new feature.
+
+New versions and releases cadence are not going to be affected. Once a new version is released in the upstream project, the Bitnami container image will be updated to use the latest version, supporting the different branches supported by the upstream project as usual.
 
 ## License
 
